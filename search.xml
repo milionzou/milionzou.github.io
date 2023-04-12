@@ -4,19 +4,183 @@
   
     
     <entry>
-      <title>森萤之尽</title>
-      <link href="/2023/02/23/%E6%A3%AE%E8%90%A4%E4%B9%8B%E5%B0%BD/"/>
-      <url>/2023/02/23/%E6%A3%AE%E8%90%A4%E4%B9%8B%E5%B0%BD/</url>
+      <title>联盟</title>
+      <link href="/2023/04/03/%E8%81%94%E7%9B%9F/"/>
+      <url>/2023/04/03/%E8%81%94%E7%9B%9F/</url>
       
-        <content type="html"><![CDATA[<h2 id="界面效果"><a href="#界面效果" class="headerlink" title="界面效果"></a>界面效果</h2><p><img src="../img/活动/兑换.gif" alt=""><br><img src="../img/活动/签到页面.gif" alt=""><br><img src="../img/活动/礼包封面.png" alt=""><br><img src="../img/活动/活动主界面.gif" alt=""><br><img src="../img/活动/任务界面.gif" alt=""><br><img src="../img/活动/商店页面.png" alt=""><br><img src="../img/活动/右上角礼包图标.png" alt=""></p>]]></content>
+        <content type="html"><![CDATA[<details class="folding-tag" yellow><summary> 联盟相关GM </summary>              <div class='content'>              <p>//加粉丝数(center)<br> GMAddAsFans(userID int64, addFans int64, isActive int)   isActive=0 总粉丝   isActive=1：本周周末粉丝</p><p>//遇到账号已有联盟的提示解决方法(center)<br>GetAllianceErrCaptainerByUserID(userID)<br>在gs服也就是你账号所在的区服执行gm命令<br>SetUserAsId(userid, asID)<br>重新登录</p><p>//添加联盟等级经验(center)<br> AddAllianceLevelExp(asId int32, exp int64)</p><p>//设置加入联盟时间<br>SetUserJoinAllianceMs(userID, deltaHours int64)</p><p>//设置离开联盟时间<br>SetAllianceSelfQuitTimeMs(userID, deltaHours int64)</p><p>//重置联盟展会新关卡(center)<br> GMResetAllianceDungeonBoss(asId int32)</p><p>// isMaster: 是否以文件中的服务器ID作为主服务器ID发送邮件(center)<br> GMSendMailsToSpecifiedServers(startTime, endTime int64, isMaster bool)</p><p>//设置联盟展会关卡及进度(center)<br> GMSetAllianceDungeonBossLevelAndScore(asId int32, level int8, curScore int64)</p><p>//增加联盟展会次数<br>SetAllianeBossFightNum(userID int64, num int32)</p><p>//增加退出联盟的时间<br>SetAllianceSelfQuitTimeMs(userID, deltaHours int64)</p><p>//设置加入时间<br>SetUserJoinAllianceMs(userID, deltaHours int64)</p><p>//添加联盟等级经验(center)<br>AddAllianceLevelExp(asId int32, exp int64)</p>              </div>            </details><details class="folding-tag" yellow><summary> 联盟相关日志查询 </summary>              <div class='content'>              <p> GmShowAllianceBuffAndBuffRewardFlagMap(asID int32)</p><ul><li><p>grep “dealwhitGetAllianceExtrendRewardByBuff” center.log   查询可领取多少粉丝</p></li><li><p>grep “itemAddFans.*.P_alliance_pop_fans_req” ./gs1.log -R -n  查询道具加成  不算贵重物</p></li><li><p>cat ./gs1.log | grep ‘addFansOrigin’  查询粉丝获取  选择题、小游戏、贵重物</p></li></ul>              </div>            </details><details class="folding-tag" yellow><summary> 联盟相关对照表 </summary>              <div class='content'>              <ul><li>联盟推广<ul><li>每轮百分比获得的加成：AllianceAdvertise</li><li>推广奖励：AllianceAdvertiseReward</li></ul></li><li>联盟签到<ul><li>联盟等级对应的打卡奖励：Allianceupgrade</li></ul></li><li>联盟展会<ul><li>每轮的奖励</li></ul></li></ul>              </div>            </details>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>农场V1.0版本</title>
+      <link href="/2023/03/17/%E5%86%9C%E5%9C%BA%E7%89%88%E6%9C%AC%E7%BC%BA%E5%A4%B1%E6%95%88%E6%9E%9C/"/>
+      <url>/2023/03/17/%E5%86%9C%E5%9C%BA%E7%89%88%E6%9C%AC%E7%BC%BA%E5%A4%B1%E6%95%88%E6%9E%9C/</url>
+      
+        <content type="html"><![CDATA[<details class="folding-tag" yellow><summary> 差异优化 </summary>              <div class='content'>              <ul><li>【种植收获】如果选中土地在屏幕红框的这片区域，不会每次选中土地，都拖视角，切换起来很晕  ：需要更改逻辑暂未处理</li><li>【种植收获】种植详情和种植物列表    只有在往上或者下移动才会消失  :最初需求不明确，导致开 发无法更改</li><li>【种植收获】锄头挖地动画还没消失时，点击土地，没反应，Ａｐｐ可以直接呼起种植栏 进行 种植  ：最开始设计没有设计挖地时候可以种植功能，也没有相关需求，改动较大且没有必要感觉，这个版本暂不处理</li><li>【种植收获】选中农田 光效层级问题</li><li>【种植收获】种植物  拖动的图标需要拖动至一半时才会完全隐藏详情框和操作框  ：这个和那个植物详情一样，最开始并未设计这个需求的功能模块，需要改动操作类的判断逻辑，改动略大，列未优化项这个版本暂时不处理</li></ul>              </div>            </details><details class="folding-tag" yellow><summary> 红点 </summary>              <div class='content'>              <ul><li>农场成就红点 有出现  领了消失（已完成验证）</li><li>客人需求红点 👇</li><li>当没有客人需求时，电视机按钮消失，当客人有new时，电视机出现红点  （已完成验证）</li><li>当道具满足需求数量时一直存在红点  仓库道具不足以及完成客人需求后，红点消失  （已完成验证）</li><li>加工品可收获时 👇</li><li>加工品可收获时，每次登陆，农场入口显示红点     进入农场后，入口红点消失，本次登陆不再显示该红点</li><li>当有新的加工品可领取时，入口提示红点，进入界面后，红点消失   新的加工品可领取：指正在加工的产品变为可领取状态，且玩家处于在线状态，不在农场界面中</li><li>种植物可收获时 👇</li><li>植物可收获时，每次登陆，农场入口显示红点，进入农场后，入口红点消失，本次登陆不再显示该红点</li><li>玩家在线时，当有新的植物成熟可领取时，入口提示红点，进入界面后，红点消失</li><li>可领取：指正在种植的植物变为可领取状态，且玩家处于在线状态，不在农场界面中</li><li>飞机订单 👇</li><li>飞机订单刷新时，显示红点，进入飞机订单界面后，该提示红点消失 </li><li>飞机订单可提交 仓库内道具数量满足订单提交条件时红点 （已完成验证）  完成或者提交后红点消失</li><li>协助飞机订单  👇</li><li>有帮助次数时 农场飞机入口显示红点 切换至帮助分页后，入口红点消失，只在分页上显示</li><li>若帮助分页内无请求内容，不显示红点</li><li>飞机订单有奖励可出发时   出现红点   出发后红点消失</li><li>货架 （农场触发红点、家具出现气泡）</li><li>前置：有空货架 或者  该商品已售完状态的货架栏  获得时触发红点 （农场触发红点、家具出现气泡、左下角出现快捷入口）</li><li>商品出售完成之后出现 红点 点击消失  、   每天第一次上线后消失（1号买完看了售尽的红点  2号上线会看到红点）</li><li>将可上架的商品消耗至0后或者仓库清零后或者查看货架界面后红点消失  </li><li>判断货架是否为空 空：气泡保留   不为空：气泡消失</li></ul>              </div>            </details><h2 id="农场相关-GM"><a href="#农场相关-GM" class="headerlink" title="农场相关 GM"></a>农场相关 GM</h2><p>//刷新农场快递车任务(gs)<br>GMRefreshFarmCar(userID int64)</p><p>//设置农场快递车已请求帮助次数(gs)<br>GMSetFarmCarSendHelpCount(userID int64,count int32)</p><p>//设置农场快递车已帮助次数(gs)<br>GMSetFarmCarHelpCount(userID int64,count int32)</p><p>//设置农场快递车任务记录(gs) htype 0-帮助次数 1-任务完成次数 2-完成轮次次数<br>GMSetFarmCarHelpCountRecord(userID int64,htype int8,count int32)</p><p>//设置农场快递车上轮结算时间(gs)<br>GMSetFarmCarStartTime(userID int64,deltaMinutes int64)</p><p>//设置农场飞机刷新次数<br>GMSetFarmPlaneCount(userID int64,count int32)</p><p>//处理农场委托 typ 1-刷新所有任务 2-刷新指定任务 3-设置帮助和请求帮助次数 param 需要指定的值<br>GMTestFarmEntrust(userID int64,typ int32,param int32)</p><p>//获得：升级、发传单、自然恢复/s<br>GmChangeVendingWallet(3001168, -40719)  增加或减少货架资金</p><h3 id="【真机情况】"><a href="#【真机情况】" class="headerlink" title="【真机情况】"></a>【真机情况】</h3><details class="folding-tag" yellow><summary> 差异优化 </summary>              <div class='content'>              <p>快速完成商品会导致 飞机订单花蕊币重叠<br>聊天框需要主动发送一条消息才能不点击聊天框里就能看见聊天内容</p>              </div>            </details>]]></content>
       
       
       
         <tags>
             
-            <tag> 兑换活动 </tag>
+            <tag> 大型功能模块 </tag>
             
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>PlayWright-录制生成脚本(3)</title>
+      <link href="/2023/03/14/PlayWright%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/"/>
+      <url>/2023/03/14/PlayWright%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/</url>
+      
+        <content type="html"><![CDATA[<details class="folding-tag" cyan close><summary> 运行 </summary>              <div class='content'>              <ul><li>在终端输入</li><li>playwright codegen <a href="http://网站地址">http://网站地址</a></li><li>正常打开之后会出现 一个浏览器窗口 一个是playwright inspector窗口</li><li>可以进行 记录测试、复制测试、清楚测试</li><li>可以更改测试语言</li></ul>              </div>            </details><details class="folding-tag" cyan close><summary> 运用 </summary>              <div class='content'>              <ul><li>一般选择 pytest代码 然后录制完成之后 复制代码</li><li>test用例就需要在 test_开头的文件运行</li><li>在test_文件里粘贴后</li><li>安装插件： pip install pytest-playwright</li></ul>              </div>            </details>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web自动化测试之微软新宠儿--PlayWright </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web自动化测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>PlayWright-基本使用(2)</title>
+      <link href="/2023/03/10/PlayWright-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-2/"/>
+      <url>/2023/03/10/PlayWright-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="初期闯关前需要准备-要导入的库"><a href="#初期闯关前需要准备-要导入的库" class="headerlink" title="初期闯关前需要准备(要导入的库)"></a>初期闯关前需要准备(要导入的库)</h1><details class="folding-tag" blcak><summary> 常用库 </summary>              <div class='content'>              <p>playwright.async_api        #异步<br>playwright.sync_api         #同步</p>              </div>            </details><h3 id="起手式"><a href="#起手式" class="headerlink" title="起手式"></a>起手式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with sync_playwright() as p:  #初始化对象   #异步的话需要特别定义说明 </span><br><span class="line">    browser = p.chromium.launch(headless=False)          # False：正常模式启动 chromium 浏览器   True：无头模式</span><br><span class="line">    #之后 browser相当于一个浏览器对象</span><br><span class="line">    page = 对象.new_page      #创建一个页面  可以创建多个</span><br><span class="line">    页面.goto(&quot;URL&quot;)      #打开一个页面</span><br><span class="line">    </span><br></pre></td></tr></table></figure><h3 id="异步起手式"><a href="#异步起手式" class="headerlink" title="异步起手式"></a>异步起手式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#异步的话需要特别定义说明</span><br><span class="line">例如 </span><br><span class="line">async def main():</span><br><span class="line">    async with async_playwright() as p</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web自动化测试之微软新宠儿--PlayWright </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web自动化测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>PlayWright-开始(1)</title>
+      <link href="/2023/03/10/PlayWright-%E5%BC%80%E5%A7%8B-1/"/>
+      <url>/2023/03/10/PlayWright-%E5%BC%80%E5%A7%8B-1/</url>
+      
+        <content type="html"><![CDATA[<p>为什么要学习<br>和selenium的区别</p><h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h3 id="安装-playwright："><a href="#安装-playwright：" class="headerlink" title="安装 playwright："></a>安装 playwright：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install playwright</span><br></pre></td></tr></table></figure><h3 id="安装所需的浏览器-chromium-firefox-和-webkit："><a href="#安装所需的浏览器-chromium-firefox-和-webkit：" class="headerlink" title="安装所需的浏览器 chromium,firefox 和 webkit："></a>安装所需的浏览器 chromium,firefox 和 webkit：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">playwright install</span><br></pre></td></tr></table></figure><h1 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h1><p><details class="folding-tag" green><summary> 启动浏览器并打开百度页面 </summary>              <div class='content'>              <p>with sync_playwright() as p:<br>    browser = p.chromium.launch(headless=False)          # 启动 chromium 浏览器<br>    page = browser.new_page()              # 打开一个标签页<br>    page.goto(“<a href="https://www.baidu.com">https://www.baidu.com</a>“)     # 打开百度地址<br>    print(page.title())                    # 打印当前页面title<br>    browser.close()</p>              </div>            </details>                           # 关闭浏览器对象</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web自动化测试之微软新宠儿--PlayWright </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web自动化测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何使用AirTest对cocos网页上进行测试</title>
+      <link href="/2023/03/01/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8AirTest%E5%AF%B9cocos%E7%BD%91%E9%A1%B5%E4%B8%8A%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95/"/>
+      <url>/2023/03/01/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8AirTest%E5%AF%B9cocos%E7%BD%91%E9%A1%B5%E4%B8%8A%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言少述"><a href="#前言少述" class="headerlink" title="前言少述"></a>前言少述</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本来想用selenium 但是发现不能节点定位 暂用Airtest</span><br></pre></td></tr></table></figure><h1 id="前置环境准备（我默认使用chrome）"><a href="#前置环境准备（我默认使用chrome）" class="headerlink" title="前置环境准备（我默认使用chrome）"></a>前置环境准备（我默认使用chrome）</h1><details class="folding-tag" yellow><summary> 浏览器驱动确认、python </summary>              <div class='content'>              <p>1、AirTest有自带chromedriver驱动(确认版本确认、IDE的路径设置正确)   版本错误或者没有   启动程序将会报驱动错误<br>2、python以及环境配置完成</p>              </div>            </details><p>先上手有需要再安装</p><h2 id="开始上手（进入IDE新建好对应项目或者功能目录）"><a href="#开始上手（进入IDE新建好对应项目或者功能目录）" class="headerlink" title="开始上手（进入IDE新建好对应项目或者功能目录）"></a>开始上手（进入IDE新建好对应项目或者功能目录）</h2><p>AirTest用的也是selenium写法所以需要先引入相关 库<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from selenium import *</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> App自动化测试之Airtest </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> airtest 自动化测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2023/02/28/hello-world/"/>
+      <url>/2023/02/28/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>AirTest（一）：了解、安装</title>
+      <link href="/2023/02/27/AirTest1/"/>
+      <url>/2023/02/27/AirTest1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="什么是Airtest"><a href="#什么是Airtest" class="headerlink" title="什么是Airtest"></a>什么是Airtest</h1><p>由 Airtest框架、poco框架、airtestIDE组成的测试套件<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Airtest是网易出品的一款基于图像识别和poco控件识别的一款跨平台的UI自动化测试工具。</span><br><span class="line">适用于游戏和App(本质上就是网易自己为了给游戏做自动化测试开发出来的一套框架)。</span><br><span class="line">后期又渐渐支持Windows和Android平台，iOS平台。 </span><br><span class="line">Airtest提供了跨平台的AP1，包括安装应用、模拟输入、断言等。</span><br><span class="line">甚于图像识别技术定位UI元素，你无需嵌入任何代码即可进行自动化测试。</span><br><span class="line">测试脚本运行后可以自动生成详细的HTML测试报告，让你迅速定位失败的测试点。</span><br><span class="line">AirtestIDE 是一个强大的GUI工具，可以帮助你录制和调试测试脚本&quot;</span><br></pre></td></tr></table></figure></p><h2 id="appium和-airtest的区别"><a href="#appium和-airtest的区别" class="headerlink" title="appium和 airtest的区别"></a>appium和 airtest的区别</h2><div class="table-container"><table><thead><tr><th><font color="red"><strong>工具</strong></font></th><th>Appium</th><th>Airtest</th></tr></thead><tbody><tr><td><strong>安装</strong></td><td>中等</td><td>简单</td></tr><tr><td><strong>支持</strong></td><td>Android、IOS、H5</td><td>Android、IOS（需要MAC🙂）、H5</td></tr><tr><td><strong>公司使用率</strong></td><td>TOP1</td><td>逐步在增加？</td></tr><tr><td><strong>相关资料</strong></td><td>多</td><td>少</td></tr><tr><td><strong>上手难度</strong></td><td>中等</td><td>一般但是没资料烦人</td></tr><tr><td><strong>测试报告</strong></td><td>有</td><td>有</td></tr><tr><td><strong>CI支持</strong></td><td>支持</td><td>支持</td></tr><tr><td><strong>Web支持</strong></td><td>支持</td><td>支持</td></tr></tbody></table></div><h2 id="airtest的优缺点"><a href="#airtest的优缺点" class="headerlink" title="airtest的优缺点"></a>airtest的优缺点</h2><details class="folding-tag" yellow><summary> 优点 </summary>              <div class='content'>              <p>1.Airtest操作比较简单，甚本上不涉及到代码，所以非常适合刚入门没什么测试经验的人利用这个工具做UI自动化测试，同时Airetest又提供了开源的API，让资深测试工程师可以基于Airtest的框架上再做高级的定制化扩展功能,<br>2.甚于图像识别和UI控件识别功能简单<br>3.支持python进行个性化脚本编程<br>4.可录制脚本一键生成报告</p>              </div>            </details><details class="folding-tag" red><summary> 缺点 </summary>              <div class='content'>              <p>1.如果经常使用图像识别脚本会产生大量的图片，会让脚本整体观感不太好(个人意见)<br>2.目前相关技术文档不多，需要自己去官网或社区探索<br>3.有时元素无法定位或者会产生未期待的错误</p>              </div>            </details><h1 id="Airtest安裝"><a href="#Airtest安裝" class="headerlink" title="Airtest安裝"></a>Airtest安裝</h1><p><a href="https://airtest.netease.com/">官網地址</a> <div class="tip warning faa-horizontal animated"><p>下載後壓縮的路徑不要含有中文</p></div></p><h1 id="啓動"><a href="#啓動" class="headerlink" title="啓動"></a>啓動</h1><p>找到解壓的 AirTest目錄 雙擊 AirtestIDE.exe 虽然现在启动了意义不大<br><div class="tip warning faa-horizontal animated"><p>！！如果启动后黑屏或者闪退可以 更改兼容模式        选项 》  setting    》兼容模式   》 更改选项进行尝试<br>选择OK之后 需要重启</p></div></p><h1 id="安卓连接"><a href="#安卓连接" class="headerlink" title="安卓连接"></a>安卓连接</h1><h2 id="连接步骤"><a href="#连接步骤" class="headerlink" title="连接步骤"></a>连接步骤</h2><p><img src="/img/airtest/9acf8ca0-d1d1-4153-981a-0b9e46123afe-14592612.jpg" alt="示例图片" style="zoom:50%;" /><br>连接之后可操作可通过Android Assistant进行快速的apk安装卸载   以及  更换输入法<br>用法参考： <a href="https://mp.weixin.qq.com/s/EH0aQnr2AwG0MmFdgoE7mw">https://mp.weixin.qq.com/s/EH0aQnr2AwG0MmFdgoE7mw</a><br><div class="tip info"><p>！！连接不上  需要检查 1：IDE是否为最新版本    2：核对是否有设置没开启    3：确认ADB是否正常连接设备     4：检查手机是否安装上Yosemite 并设置为当前输入法<br>输入法apk以及adb   路径：Airtest\AirtestIDE\airtest\core\android\static<br>Android连接常见问题官方文档👇<br> <a href="https://airtest.doc.io.netease.com/IDEdocs/device_connection/2_android_faq/">https://airtest.doc.io.netease.com/IDEdocs/device_connection/2_android_faq/</a></p></div></p><h1 id="安卓模拟器的连接"><a href="#安卓模拟器的连接" class="headerlink" title="安卓模拟器的连接"></a>安卓模拟器的连接</h1><p><img src="/img/airtest/ad63337a-ccb9-4cb1-873a-308970d06889-14592612.jpg" alt="示例图片" style="zoom:50%;" /></p><h2 id="常见模拟器连接参数及问题"><a href="#常见模拟器连接参数及问题" class="headerlink" title="常见模拟器连接参数及问题"></a>常见模拟器连接参数及问题</h2><details class="folding-tag" cyan close><summary> 点击查看详情 </summary>              <div class='content'>              <p>遇到黑屏报错首先尝试选择其他的连接参数<br><img src="/img/airtest/afa0b757-ff80-49a1-a410-b074777c2a10-14592612.jpg" alt="示例图片" style="zoom:50%;" /><br><img src="/img/airtest/d53ea7df-9ad5-4792-982b-64a981a54c65-14592612.jpg" alt="示例图片" style="zoom:50%;" /></p>              </div>            </details><h1 id="使用脚本的形式连接真机"><a href="#使用脚本的形式连接真机" class="headerlink" title="使用脚本的形式连接真机"></a>使用脚本的形式连接真机</h1><details class="folding-tag" cyan close><summary> 点击查看详情 </summary>              <div class='content'>              <p><img src="/img/airtest/47f68b75-7051-4f97-924a-18f302b2acc4-14592612.jpg" alt="示例图片" style="zoom:50%;" /><br><img src="/img/airtest/8448d352-c0bd-4cb2-bade-c855790a4e4f-14592612.jpg" alt="示例图片" style="zoom:50%;" /></p>              </div>            </details><h1 id="连接Windows窗口（待补充）"><a href="#连接Windows窗口（待补充）" class="headerlink" title="连接Windows窗口（待补充）"></a>连接Windows窗口（待补充）</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> App自动化测试之Airtest </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> airtest </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>农场</title>
+      <link href="/2023/02/23/%E6%A3%AE%E8%90%A4%E4%B9%8B%E5%B0%BD/"/>
+      <url>/2023/02/23/%E6%A3%AE%E8%90%A4%E4%B9%8B%E5%B0%BD/</url>
+      
+        <content type="html"><![CDATA[<p><img src="img_4.png" alt="img_4.png"></p>]]></content>
+      
+      
       
     </entry>
     
@@ -27,7 +191,7 @@
       <link href="/2023/02/22/%E5%B0%8F%E5%BA%97%E5%91%A8%E5%B9%B4%E5%BA%86/"/>
       <url>/2023/02/22/%E5%B0%8F%E5%BA%97%E5%91%A8%E5%B9%B4%E5%BA%86/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="周年庆："><a href="#周年庆：" class="headerlink" title="周年庆："></a>周年庆：</h1><div class="table-container"><table><thead><tr><th>前置</th><th>步骤</th><th>结果</th></tr></thead><tbody><tr><td>入口按钮以及跳转</td><td></td><td></td></tr><tr><td>活动开启结束时间</td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table></div>]]></content>
       
       
       <categories>
@@ -42,19 +206,6 @@
             <tag> 活动 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2023/02/21/hello-world/"/>
-      <url>/2023/02/21/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
       
     </entry>
     
